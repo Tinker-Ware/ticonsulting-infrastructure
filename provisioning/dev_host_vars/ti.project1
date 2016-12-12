@@ -1,0 +1,60 @@
+---
+## YII
+cookie_validation_key: pass
+#yii_github_repo https://github.com/Tinker-Ware/landing-page
+#yii_git_version my_branch
+
+## Mysql
+mysql_root_password: rootpass
+mysql_users:
+  - name: "ticonsulting"
+    host: "localhost"
+    password: "password"
+    priv: "ti_database.*:ALL"
+mysql_packages:
+  - mariadb-client
+  - mariadb-server
+  - python-mysqldb
+mysql_databases:
+  - name: "ti_database"
+    encoding: utf8
+    collation: utf8_general_ci
+
+#NGINX
+nginx_remove_default_vhost: true
+nginx_vhosts:
+  - server_name: "_"
+    listen: "80"
+    extra_parameters: |
+      location / {
+        proxy_set_header    Host $http_host;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_pass          http://127.0.0.1:8080;
+      }
+    root: "_"
+
+# Base Role
+server_user: tinkerware
+server_group: tinkerware
+
+# Password: password
+users:
+  tinkerware:
+    name: tinkerware
+    group: tinkerware
+    generate_ssh_key: yes
+    groups: "sudo"
+    password: $6$PqQH1UMx7L$C8.JjzOlMbLVed7DMizT9XGKzTaLsucv/pYzFhBjIUVmBffq.WyhcwfIjLiBDe4drT7iHOy8W0em0MKLaK2bR.
+    authorized_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZ7DLbiAQ680hZlapMm7hsvuslplUd9PvDx1eoXjCHkDvMZPf2N6nH0ziOYWt9Z3h1GRGHu+3mfQ/FR12uQUqxLir+p0FoN4YUmN38LUrz/nlpqE8I1/izqXuiwId63p28logIM3Grb19w+5a0ubV248TAT+L0ch0IG60bCyrDYZ2gdpdxAnuObpSTEi+bQ3fSM2lF/h3tCrgprhlCUSH6SKvBeYAjovwjY+dJ4ZM2IOdpeSIoZc6yGA16jTKg6lVB926GeboqAO2MsUerHw8T2OPC0975oEpiUDh4TUVoMScP2eWdV4KsR0d11rYqIuEkSzeUfLVR2pP9oRxm2JkLQUqk5H/SqRxhw2NKMSzaC8vmTXWCD2l2Gm4y2X+fsGdjsTpfNXF+ayCFaKV+0pE0jBBjalXeAHi1/W1OJCWjl0ZUc9zSv+bn+GypxH4/g9vK8GMPjq7M4TjtEMexVGTntcpH44G3Tj1ziIcsidoj3UqD1HX+UWpEIRATyAKLd/d2lnQBWOvmuztuRghxGaMyNkEXowd6s/pfQii2/aU6lH50WsDlY+5Bwa/k6dN5iir4hSStK0SO0Zx6j969Zz6wLbITzZoq1ThW73ErWFwjuxdx1bcYzyCvTQx6Ck9wgrv5zZGJmYD6Dg2d730odHKwnWKRpEa97usQ/HwWMXH2UQ== tinkerware@ansible1"
+
+gitconfig:
+  user: tinkerware
+  ssh: yes
+  ssh_key_path: "/home/tinkerware/.ssh/ansible_id_rsa"
+  option:
+    user_email: tinkerwareio@gmail.com
+    user_name: tinkerwarebot
+
+private_key: no
+private_key_name: ansible_id_rsa
