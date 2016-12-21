@@ -1,6 +1,6 @@
 [submodule "provisioning/roles/nginx"]
-           path = provisioning/roles/nginx
-           url = https://github.com/geerlingguy/ansible-role-nginx.git
+	path = provisioning/roles/nginx
+	url = https://github.com/geerlingguy/ansible-role-nginx.git
 [submodule "provisioning/roles/mysql"]
 	path = provisioning/roles/mysql
 	url = https://github.com/geerlingguy/ansible-role-mysql.git
