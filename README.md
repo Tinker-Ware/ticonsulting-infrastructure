@@ -32,6 +32,11 @@ All the files will be placed there ready to be modified.
 
 HAPPY CODING!
 
+FOR WINDOWS
+===
+
+**Run vagrant commands in a terminal with Administrator permissions**. (To be able to create symlinks)
+
 Current DB Config
 ===
 
