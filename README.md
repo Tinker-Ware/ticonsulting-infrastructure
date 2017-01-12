@@ -21,6 +21,28 @@ For already cloned repos, just update the submodules.
   git submodule update --init --recursive
 ```
 
+Modify your github credentials updating `provisioning/host_vars/ti.project1`
+
+```
+## GIT
+gitconfig:
+  user: user     ## ADD YOUR USER
+  ssh: yes
+  ssh_key_path: "/home/tinkerware/.ssh/ansible_id_rsa"
+  option:
+    user_email: user@ticonsulting.com  ## ADD YOUR GITHUB EMAIL
+    user_name: username   ## ADD YOUR GITHUB USERNAME
+
+```
+
+If using a private repository, Include your private key in:
+`provisioning/host_files/ti.project1/keys/private` in a file as follows:
+
+```
+priv_k: |
+   << Private key here >>
+```
+
 Start working with the created Vagrant machine:
 ```
   vagrant up
