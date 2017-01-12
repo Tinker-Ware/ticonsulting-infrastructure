@@ -2,3 +2,4 @@ provisioning/roles/*
 .vagrant/
 tinker_shared_files/
 provisioning/host_files/
+local_files/
