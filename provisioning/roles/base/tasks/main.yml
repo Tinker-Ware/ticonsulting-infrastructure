@@ -97,8 +97,10 @@
     src=gitconfig
     dest=~/.gitconfig
     mode=0644
+    owner="{{ server_user }}"
+    group="{{ server_group }}"
   sudo: yes
-  sudo_user: "{{ gitconfig.user }}"
+  sudo_user: "{{ server_user }}"
   when: gitconfig is defined
 
 - name: Append ssh config for git
@@ -106,8 +108,13 @@
     dest: "/home/{{ server_user }}/.ssh/config"
     line:  "Host github.com\n  IdentityFile  {{ gitconfig.ssh_key_path }}\n  IdentitiesOnly  yes"
   sudo: yes
-  sudo_user: "{{ gitconfig.user }}"
+  sudo_user: "{{ server_user }}"
   when: (gitconfig is defined and gitconfig.ssh)
+
+- name: Recognize github to download repos
+  shell: ssh-keyscan github.com >> ~/.ssh/known_hosts
+  sudo: yes
+  sudo_user: "{{ server_user }}"
 
 - name: Add cron jobs
   cron:
