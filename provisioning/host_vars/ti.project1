@@ -49,8 +49,7 @@ server_group: tinkerware
 
 # Password: password
 users:
-  tinkerware:
-    name: tinkerware
+  - name: tinkerware
     group: tinkerware
     generate_ssh_key: yes
     groups: "sudo"

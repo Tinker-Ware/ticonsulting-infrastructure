@@ -7,3 +7,6 @@
 [submodule "provisioning/roles/yii"]
 	path = provisioning/roles/yii
 	url = https://github.com/Tinker-Ware/ansible-yii-role.git
+[submodule "provisioning/roles/base"]
+	path = provisioning/roles/base
+	url = https://github.com/Tinker-Ware/ansible-base-role.git
