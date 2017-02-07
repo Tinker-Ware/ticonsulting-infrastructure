@@ -13,6 +13,7 @@ gitconfig:
 cookie_validation_key: pass
 yii_git_repo: git@github.com:ticonsulting/RivunDevelop.git
 #yii_git_version my_branch
+#yii_extra_flags: "--no-dev"
 
 ## Mysql
 mysql_root_password: rootpass
