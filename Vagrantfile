@@ -44,7 +44,7 @@ def standard_machine(config, hostname, ip)
       vb.customize ['modifyvm', :id, '--nictype2', 'virtio']
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-      vb.memory = 512
+      vb.memory = 1024
       vb.cpus   = 2
     end
 
