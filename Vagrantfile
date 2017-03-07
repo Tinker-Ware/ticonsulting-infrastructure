@@ -2,7 +2,8 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  standard_machine config, 'ti.project1', '192.168.33.10'
+  standard_machine config, 'ti.riv', '192.168.33.20'
+  standard_machine config, 'ti.pyro', '192.168.33.30'
 end
 
 def standard_machine(config, hostname, ip)
