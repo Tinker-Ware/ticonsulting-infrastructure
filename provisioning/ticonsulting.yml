@@ -1,6 +1,12 @@
 ---
-- hosts: ti.project1
+- hosts: ti.riv
   roles:
     - yii
-    - { role: mysql, sudo: yes }
+    - { role: mysql, sudo: yes, tags: mysql }
+    - { role: nginx, sudo: yes, tags: nginx }
+
+- hosts: ti.pyro
+  roles:
+    - yii
+    - { role: mysql, sudo: yes, tags: mysql }
     - { role: nginx, sudo: yes, tags: nginx }
