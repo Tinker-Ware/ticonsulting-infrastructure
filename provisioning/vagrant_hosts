@@ -1,1 +1,2 @@
-ti.project1 ansible_connection=local
+ti.pyro ansible_connection=local
+ti.riv ansible_connection=local
