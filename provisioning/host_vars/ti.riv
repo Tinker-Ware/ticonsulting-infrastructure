@@ -1,0 +1,72 @@
+---
+## GIT
+gitconfig:
+  user: user
+  ssh: yes
+  ssh_key_path: "/home/tinkerware/.ssh/ansible_id_rsa"
+  option:
+    user_email: user@ticonsulting.com
+    user_name: username
+
+
+## YII
+cookie_validation_key: pass
+yii_git_repo: git@github.com:ticonsulting/RivunDevelop.git
+#yii_git_version my_branch
+yii_extra_flags: "--no-dev"
+
+## Mysql
+mysql_root_password: rootpass
+mysql_users:
+- name: "rivun"
+  host: "%"
+  password: "2q#W4e%R"
+  priv: "bd_rivas.*:ALL/*.*:SUPER"
+mysql_packages:
+- mariadb-client
+- mariadb-server
+- python-mysqldb
+mysql_databases:
+- name: "bd_rivas"
+  encoding: utf8
+  collation: utf8_general_ci
+
+#NGINX
+nginx_remove_default_vhost: true
+nginx_vhosts:
+  - server_name: "_"
+    listen: "80"
+    extra_parameters: |
+      location / {
+        proxy_set_header    Host $http_host;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_pass          http://127.0.0.1:8080;
+        proxy_connect_timeout       600;
+        proxy_send_timeout          600;
+        proxy_read_timeout          600;
+        send_timeout                600;
+      }
+    root: "_"
+
+# Base Role
+server_user: tinkerware
+server_group: tinkerware
+
+# Password: password
+users:
+  - name: tinkerware
+    group: tinkerware
+    generate_ssh_key: yes
+    extra_groups: "sudo"
+    password: $6$PqQH1UMx7L$C8.JjzOlMbLVed7DMizT9XGKzTaLsucv/pYzFhBjIUVmBffq.WyhcwfIjLiBDe4drT7iHOy8W0em0MKLaK2bR.
+    authorized_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZ7DLbiAQ680hZlapMm7hsvuslplUd9PvDx1eoXjCHkDvMZPf2N6nH0ziOYWt9Z3h1GRGHu+3mfQ/FR12uQUqxLir+p0FoN4YUmN38LUrz/nlpqE8I1/izqXuiwId63p28logIM3Grb19w+5a0ubV248TAT+L0ch0IG60bCyrDYZ2gdpdxAnuObpSTEi+bQ3fSM2lF/h3tCrgprhlCUSH6SKvBeYAjovwjY+dJ4ZM2IOdpeSIoZc6yGA16jTKg6lVB926GeboqAO2MsUerHw8T2OPC0975oEpiUDh4TUVoMScP2eWdV4KsR0d11rYqIuEkSzeUfLVR2pP9oRxm2JkLQUqk5H/SqRxhw2NKMSzaC8vmTXWCD2l2Gm4y2X+fsGdjsTpfNXF+ayCFaKV+0pE0jBBjalXeAHi1/W1OJCWjl0ZUc9zSv+bn+GypxH4/g9vK8GMPjq7M4TjtEMexVGTntcpH44G3Tj1ziIcsidoj3UqD1HX+UWpEIRATyAKLd/d2lnQBWOvmuztuRghxGaMyNkEXowd6s/pfQii2/aU6lH50WsDlY+5Bwa/k6dN5iir4hSStK0SO0Zx6j969Zz6wLbITzZoq1ThW73ErWFwjuxdx1bcYzyCvTQx6Ck9wgrv5zZGJmYD6Dg2d730odHKwnWKRpEa97usQ/HwWMXH2UQ== tinkerware@ansible1"
+  - name: ticonsulting
+    group: ticonsulting
+    generate_ssh_key: yes
+    extra_groups: ""
+    password: $6$CBljOFU2NN0$2.yASbJMV1rQ9txNNVx/jmfHDSSBvvcY8BDa5BgUXcj6DQYEg/8f3ZZT/Ewe7G18TuYNL4my2jtW1qYrUgCK4/
+    authorized_keys: []
+
+private_key: yes
+private_key_name: ansible_id_rsa
